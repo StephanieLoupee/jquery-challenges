@@ -17,6 +17,7 @@
 
   var saveButton = $('#save-button');
   var loadButton = $('#load-button');
+  let SaveStorage = localStorage;
 
   /**
    * Gets the text from the element for you
@@ -33,4 +34,21 @@
   function setText(text) {
     return $('#save-me').val(text);
   }
+
+
+  saveButton.click(function() {
+      //console.log("saveButton clicked");
+      SaveStorage.setItem('savedText', getText());
+      //console.log($('#save-me').val());
+
+  })
+
+
+  loadButton.click(function() {
+    //  console.log("loadButton clicked");
+    let newText = SaveStorage.getItem('savedText');
+    setText(newText);
+
+  })
+
 })();
